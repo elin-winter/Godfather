@@ -35,6 +35,14 @@ class Persona {
   }
 
   method tieneArmaSutil() = armas.any({a => a.sutil()})
+
+  method atacarFamilia(familia) {
+    const victima = familia.peligroso()
+    if(victima != null)
+      self.trabajar(victima)
+    else
+      throw new DomainException (message = "Ya no queda miembros por atacar :)")
+  }
   
 }
 

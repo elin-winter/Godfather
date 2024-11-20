@@ -19,7 +19,7 @@ class Familia {
         if(self.miembrosVivos().isEmpty())
             null
         else 
-        self.miembrosVivos().max({ m => m.armas().size()}) 
+          self.miembrosVivos().max({ m => m.armas().size()}) 
     
     method miembrosVivos() = 
         miembros.filter({m => m.estaVivo()})
@@ -39,10 +39,7 @@ class Familia {
   }
 
   method ataqueSorpresa(familia) {
-    if(familia.peligroso() != null) {
-        miembros.anyOne().trabajar(familia.peligroso())
-        self.ataqueSorpresa(familia)
-    }
+    miembros.forEach({m => m.atacarFamilia(familia)})
   }
 
   method luto() {
@@ -56,7 +53,7 @@ class Familia {
     else 
         nuevoDon.rango(new Don(subordinados = nuevoDon.subordinados()))
     
-    miembros.forEach({m => m.aumentarLealtad(0.1)})
+    miembros.forEach({m => m.aumentarLealtad(1.1)})
 
   }
 
